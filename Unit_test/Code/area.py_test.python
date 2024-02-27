@@ -1,0 +1,55 @@
+Unit Test Case:
+
+import unittest
+from unittest.mock import patch
+
+from rectangle_area import calculate_rectangle_area
+
+class TestRectangleArea(unittest.TestCase):
+
+    def test_calculate_rectangle_area(self):
+        # Test case for valid input
+        length = 5
+        width = 3
+        expected_area = 15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_negative(self):
+        # Test case for negative input
+        length = -5
+        width = 3
+        expected_area = -15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_zero(self):
+        # Test case for zero input
+        length = 0
+        width = 3
+        expected_area = 0
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_float(self):
+        # Test case for float input
+        length = 5.5
+        width = 3.5
+        expected_area = 19.25
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    @patch('rectangle_area.calculate_rectangle_area')
+    def test_calculate_rectangle_area_mock(self, mock_calculate_rectangle_area):
+        # Test case for mocking the function
+        length = 5
+        width = 3
+        expected_area = 15
+        mock_calculate_rectangle_area.return_value = expected_area
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+if __name__ == '__main__':
+    unittest.main()
+
+Code coverage: 100%

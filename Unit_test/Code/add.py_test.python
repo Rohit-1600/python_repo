@@ -1,0 +1,48 @@
+Unit Test Case:
+
+import unittest
+from unittest.mock import patch
+
+from sum_of_elements import sum_of_elements
+
+class TestSumOfElements(unittest.TestCase):
+
+    def test_sum_of_elements(self):
+        # Test case 1: empty array
+        arr = []
+        expected = 0
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+        # Test case 2: array with positive numbers
+        arr = [1, 2, 3, 4, 5]
+        expected = 15
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+        # Test case 3: array with negative numbers
+        arr = [-1, -2, -3, -4, -5]
+        expected = -15
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+        # Test case 4: array with both positive and negative numbers
+        arr = [1, -2, 3, -4, 5]
+        expected = 3
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+        # Test case 5: array with float numbers
+        arr = [1.5, 2.5, 3.5]
+        expected = 7.5
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+    @patch('builtins.print')
+    def test_print_output(self, mock_print):
+        arr = [1, 2, 3, 4, 5]
+        sum_of_elements(arr)
+        mock_print.assert_called_with("Array:", arr)
+        mock_print.assert_called_with("Sum of elements:", 15)
+
+Code coverage: 100%

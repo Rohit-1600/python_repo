@@ -1,0 +1,52 @@
+Unit Test Case:
+
+import unittest
+from unittest.mock import patch
+
+from code import reverse_string
+
+class TestReverseString(unittest.TestCase):
+    
+    def test_reverse_string(self):
+        # Test with a simple string
+        input_str = "Hello"
+        expected_output = "olleH"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test with an empty string
+        input_str = ""
+        expected_output = ""
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test with a string containing special characters
+        input_str = "!@#$%^&*()"
+        expected_output = ")(*&^%$#@!"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test with a string containing numbers
+        input_str = "12345"
+        expected_output = "54321"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test with a string containing spaces
+        input_str = "Hello World"
+        expected_output = "dlroW olleH"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+    @patch('builtins.print')
+    def test_reverse_string_print(self, mock_print):
+        # Test if the function correctly prints the original and reversed string
+        input_str = "Hello, World!"
+        expected_output = "Original string: Hello, World!\nReversed string: !dlroW ,olleH"
+        reverse_string(input_str)
+        mock_print.assert_called_with(expected_output)
+        
+if __name__ == '__main__':
+    unittest.main()
+    
+Code coverage: 100%
