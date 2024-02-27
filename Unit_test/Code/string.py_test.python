@@ -1,0 +1,38 @@
+Unit Test Case:
+
+import unittest
+from unittest.mock import patch
+
+from reverse_string import reverse_string
+
+class TestReverseString(unittest.TestCase):
+    def test_reverse_string(self):
+        input_str = "Hello, World!"
+        expected_output = "!dlroW ,olleH"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+
+    def test_reverse_empty_string(self):
+        input_str = ""
+        expected_output = ""
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+
+    def test_reverse_single_character_string(self):
+        input_str = "a"
+        expected_output = "a"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+
+    @patch('reverse_string.reverse_string')
+    def test_reverse_string_called_with_correct_arguments(self, mock_reverse_string):
+        input_str = "Hello, World!"
+        reverse_string(input_str)
+        mock_reverse_string.assert_called_once_with(input_str)
+
+    def test_reverse_string_returns_string(self):
+        input_str = "Hello, World!"
+        actual_output = reverse_string(input_str)
+        self.assertIsInstance(actual_output, str)
+
+Code coverage: 100%

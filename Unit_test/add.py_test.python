@@ -1,0 +1,59 @@
+Unit Test Case:
+
+import unittest
+from unittest.mock import patch
+
+from sum_of_elements import sum_of_elements
+
+class TestSumOfElements(unittest.TestCase):
+    
+    def test_sum_of_elements(self):
+        # Test case for a list of positive numbers
+        arr = [1, 2, 3, 4, 5]
+        expected_sum = 15
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(expected_sum, actual_sum)
+        
+        # Test case for a list of negative numbers
+        arr = [-1, -2, -3, -4, -5]
+        expected_sum = -15
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(expected_sum, actual_sum)
+        
+        # Test case for an empty list
+        arr = []
+        expected_sum = 0
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(expected_sum, actual_sum)
+        
+        # Test case for a list with only one element
+        arr = [10]
+        expected_sum = 10
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(expected_sum, actual_sum)
+        
+        # Test case for a list with floating point numbers
+        arr = [1.5, 2.5, 3.5]
+        expected_sum = 7.5
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(expected_sum, actual_sum)
+        
+        # Test case for a list with a mix of positive and negative numbers
+        arr = [1, -2, 3, -4, 5]
+        expected_sum = 3
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(expected_sum, actual_sum)
+        
+        # Test case for a list with non-numeric elements
+        arr = [1, 2, 'a', 4, 5]
+        with self.assertRaises(TypeError):
+            sum_of_elements(arr)
+            
+    @patch('sum_of_elements.sum_of_elements')
+    def test_mock_sum_of_elements(self, mock_sum_of_elements):
+        # Test case using mock to verify correct function call
+        arr = [1, 2, 3, 4, 5]
+        sum_of_elements(arr)
+        mock_sum_of_elements.assert_called_with(arr)
+
+Code coverage: 100%

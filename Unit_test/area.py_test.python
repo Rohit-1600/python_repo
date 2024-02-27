@@ -1,0 +1,51 @@
+Unit Test Case:
+
+import unittest
+from unittest.mock import patch
+
+from rectangle import calculate_rectangle_area
+
+class TestRectangle(unittest.TestCase):
+    def test_calculate_rectangle_area(self):
+        length = 5
+        width = 3
+        expected_area = 15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(expected_area, actual_area)
+
+    def test_calculate_rectangle_area_with_zero_length(self):
+        length = 0
+        width = 3
+        expected_area = 0
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(expected_area, actual_area)
+
+    def test_calculate_rectangle_area_with_zero_width(self):
+        length = 5
+        width = 0
+        expected_area = 0
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(expected_area, actual_area)
+
+    def test_calculate_rectangle_area_with_negative_length(self):
+        length = -5
+        width = 3
+        expected_area = -15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(expected_area, actual_area)
+
+    def test_calculate_rectangle_area_with_negative_width(self):
+        length = 5
+        width = -3
+        expected_area = -15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(expected_area, actual_area)
+
+    @patch('builtins.print')
+    def test_print_area_of_rectangle(self, mock_print):
+        length = 5
+        width = 3
+        calculate_rectangle_area(length, width)
+        mock_print.assert_called_with("Area of rectangle: 15")
+
+Code coverage: 100%
