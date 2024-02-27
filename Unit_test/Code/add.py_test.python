@@ -1,0 +1,117 @@
+Unit Test Case:
+
+import unittest
+from unittest.mock import patch
+
+from sum_of_elements import sum_of_elements
+
+class TestSumOfElements(unittest.TestCase):
+
+    def test_sum_of_elements(self):
+        # Test case with a list of positive integers
+        arr = [1, 2, 3, 4, 5]
+        expected_sum = 15
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        # Test case with a list of negative integers
+        arr = [-1, -2, -3, -4, -5]
+        expected_sum = -15
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        # Test case with a list of mixed integers
+        arr = [1, -2, 3, -4, 5]
+        expected_sum = 3
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        # Test case with an empty list
+        arr = []
+        expected_sum = 0
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        # Test case with a list of one element
+        arr = [10]
+        expected_sum = 10
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        # Test case with a list of floating point numbers
+        arr = [1.5, 2.5, 3.5]
+        expected_sum = 7.5
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+    @patch('sum_of_elements.sum_of_elements')
+    def test_mock_sum_of_elements(self, mock_sum_of_elements):
+        # Test case using mock to check if the function is called with the correct arguments
+        arr = [1, 2, 3]
+        sum_of_elements(arr)
+        mock_sum_of_elements.assert_called_with(arr)
+
+    def test_invalid_input(self):
+        # Test case with invalid input (non-iterable)
+        arr = 5
+        with self.assertRaises(TypeError):
+            sum_of_elements(arr)
+
+    def test_code_coverage(self):
+        # Test case to check code coverage
+        arr = [1, 2, 3, 4, 5]
+        expected_sum = 15
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [-1, -2, -3, -4, -5]
+        expected_sum = -15
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [1, -2, 3, -4, 5]
+        expected_sum = 3
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = []
+        expected_sum = 0
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [10]
+        expected_sum = 10
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [1.5, 2.5, 3.5]
+        expected_sum = 7.5
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        expected_sum = 55
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [-10, -20, -30, -40, -50]
+        expected_sum = -150
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [1, -2, 3, -4, 5, -6, 7, -8, 9, -10]
+        expected_sum = 5
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        expected_sum = 120
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [-1, -2, -3, -4, -5, -6, -7, -8, -9, -10]
+        expected_sum = -55
+        actual_sum = sum_of_elements(arr)
+        self.assertEqual(actual_sum, expected_sum)
+
+        arr = [1, -2, 3, -
