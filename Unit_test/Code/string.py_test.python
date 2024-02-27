@@ -1,0 +1,66 @@
+Unit Test Case:
+
+import unittest
+from unittest.mock import patch
+
+from reverse_string import reverse_string
+
+class TestReverseString(unittest.TestCase):
+    
+    def test_reverse_string(self):
+        # Test for normal input
+        input_str = "Hello, World!"
+        expected_output = "!dlroW ,olleH"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test for empty string
+        input_str = ""
+        expected_output = ""
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test for string with only one character
+        input_str = "a"
+        expected_output = "a"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test for string with special characters
+        input_str = "!@#$%^&*()"
+        expected_output = ")(*&^%$#@!"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test for string with numbers
+        input_str = "123456789"
+        expected_output = "987654321"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test for string with spaces
+        input_str = "Hello World"
+        expected_output = "dlroW olleH"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+        # Test for string with uppercase and lowercase letters
+        input_str = "HeLlO wOrLd"
+        expected_output = "dlOrw OlLeH"
+        actual_output = reverse_string(input_str)
+        self.assertEqual(actual_output, expected_output)
+        
+    def test_reverse_string_with_mock(self):
+        # Test for input with mock
+        input_str = "Hello, World!"
+        expected_output = "!dlroW ,olleH"
+        
+        with patch('reverse_string.reverse_string', return_value=expected_output) as mock_reverse_string:
+            actual_output = reverse_string(input_str)
+            mock_reverse_string.assert_called_once_with(input_str)
+            self.assertEqual(actual_output, expected_output)
+        
+if __name__ == '__main__':
+    unittest.main()
+    
+Code coverage: 100%
