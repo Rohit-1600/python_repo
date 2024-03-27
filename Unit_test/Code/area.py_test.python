@@ -1,0 +1,88 @@
+import unittest
+from unittest.mock import patch
+
+class TestCalculateRectangleArea(unittest.TestCase):
+    def test_calculate_rectangle_area(self):
+        length = 5
+        width = 3
+        expected_area = 15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_with_zero_length(self):
+        length = 0
+        width = 3
+        expected_area = 0
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_with_zero_width(self):
+        length = 5
+        width = 0
+        expected_area = 0
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_with_negative_length(self):
+        length = -5
+        width = 3
+        expected_area = -15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_with_negative_width(self):
+        length = 5
+        width = -3
+        expected_area = -15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_with_decimal_length(self):
+        length = 5.5
+        width = 3
+        expected_area = 16.5
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_with_decimal_width(self):
+        length = 5
+        width = 3.5
+        expected_area = 17.5
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_with_string_length(self):
+        length = "5"
+        width = 3
+        expected_area = 15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_with_string_width(self):
+        length = 5
+        width = "3"
+        expected_area = 15
+        actual_area = calculate_rectangle_area(length, width)
+        self.assertEqual(actual_area, expected_area)
+
+    def test_calculate_rectangle_area_with_null_length(self):
+        length = None
+        width = 3
+        with self.assertRaises(TypeError):
+            calculate_rectangle_area(length, width)
+
+    def test_calculate_rectangle_area_with_null_width(self):
+        length = 5
+        width = None
+        with self.assertRaises(TypeError):
+            calculate_rectangle_area(length, width)
+
+    @patch('builtins.print')
+    def test_calculate_rectangle_area_with_print(self, mock_print):
+        length = 5
+        width = 3
+        calculate_rectangle_area(length, width)
+        mock_print.assert_called_with("Area of rectangle:", 15)
+
+if __name__ == '__main__':
+    unittest.main()
