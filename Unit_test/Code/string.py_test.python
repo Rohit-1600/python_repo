@@ -1,0 +1,16 @@
+import unittest
+from unittest import mock
+from module_name import reverse_string
+
+class TestReverseString(unittest.TestCase):
+    
+    def test_reverse_string(self):
+        input_string = "Hello, World!"
+        expected_output = "!dlroW ,olleH"
+        
+        result = reverse_string(input_string)
+        
+        self.assertEqual(result, expected_output)
+
+if __name__ == '__main__':
+    unittest.main()

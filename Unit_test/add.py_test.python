@@ -1,0 +1,40 @@
+import unittest
+from unittest import mock
+
+class TestSumOfElements(unittest.TestCase):
+    
+    def test_sum_of_elements_valid_input(self):
+        arr = [1, 2, 3, 4, 5]
+        expected_result = 15
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected_result)
+    
+    def test_sum_of_elements_empty_input(self):
+        arr = []
+        expected_result = 0
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected_result)
+    
+    def test_sum_of_elements_negative_numbers(self):
+        arr = [-1, -2, -3, -4, -5]
+        expected_result = -15
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected_result)
+    
+    def test_sum_of_elements_float_numbers(self):
+        arr = [1.5, 2.5, 3.5, 4.5, 5.5]
+        expected_result = 17.5
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected_result)
+    
+    @mock.patch('builtins.sum')
+    def test_sum_of_elements_mock_builtin_sum(self, mock_sum):
+        arr = [1, 2, 3, 4, 5]
+        expected_result = 15
+        mock_sum.return_value = expected_result
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected_result)
+        mock_sum.assert_called_once_with(arr)
+
+if __name__ == '__main__':
+    unittest.main()

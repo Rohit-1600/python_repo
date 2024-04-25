@@ -1,0 +1,59 @@
+import unittest
+from unittest.mock import patch
+
+from rectangle import calculate_rectangle_area
+
+class TestRectangle(unittest.TestCase):
+    
+    def test_calculate_rectangle_area(self):
+        # Test with positive numbers
+        length = 5
+        width = 3
+        result = calculate_rectangle_area(length, width)
+        self.assertEqual(result, 15)
+    
+        # Test with negative numbers
+        length = -5
+        width = -3
+        result = calculate_rectangle_area(length, width)
+        self.assertEqual(result, 15)
+    
+        # Test with decimal numbers
+        length = 2.5
+        width = 4.8
+        result = calculate_rectangle_area(length, width)
+        self.assertEqual(result, 12)
+        
+        # Test with zero length
+        length = 0
+        width = 10
+        result = calculate_rectangle_area(length, width)
+        self.assertEqual(result, 0)
+        
+        # Test with zero width
+        length = 5
+        width = 0
+        result = calculate_rectangle_area(length, width)
+        self.assertEqual(result, 0)
+        
+        # Test with negative length and width
+        length = -5
+        width = -10
+        result = calculate_rectangle_area(length, width)
+        self.assertEqual(result, 50)
+        
+        # Test with large values
+        length = 1000000000
+        width = 1000000000
+        result = calculate_rectangle_area(length, width)
+        self.assertEqual(result, 1000000000000000000)
+    
+    def test_calculate_rectangle_area_boundary_cases(self):
+        # Test with empty inputs
+        length = None
+        width = None
+        result = calculate_rectangle_area(length, width)
+        self.assertEqual(result, None)
+    
+if __name__ == '__main__':
+    unittest.main()
