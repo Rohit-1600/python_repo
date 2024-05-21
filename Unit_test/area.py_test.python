@@ -1,0 +1,16 @@
+import unittest
+from unittest.mock import MagicMock
+from <file_name> import calculate_rectangle_area
+
+class TestCalculateRectangleArea(unittest.TestCase):
+    def test_calculate_rectangle_area(self):
+        length = 5
+        width = 3
+        expected_area = 15.0
+
+        area = calculate_rectangle_area(length, width)
+
+        self.assertEqual(area, expected_area)
+
+if __name__ == "__main__":
+    unittest.main()

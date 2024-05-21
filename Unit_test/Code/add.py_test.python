@@ -1,0 +1,48 @@
+import unittest
+from unittest.mock import MagicMock
+
+from my_module import sum_of_elements
+
+class MyModuleTestCase(unittest.TestCase):
+    def test_sum_of_elements_with_valid_array(self):
+        # Arrange
+        arr = [1, 2, 3, 4, 5]
+        
+        # Act
+        result = sum_of_elements(arr)
+        
+        # Assert
+        self.assertEqual(result, 15)
+    
+    def test_sum_of_elements_with_empty_array(self):
+        # Arrange
+        arr = []
+        
+        # Act
+        result = sum_of_elements(arr)
+        
+        # Assert
+        self.assertEqual(result, 0)
+    
+    def test_sum_of_elements_with_negative_numbers(self):
+        # Arrange
+        arr = [-1, -2, -3, -4, -5]
+        
+        # Act
+        result = sum_of_elements(arr)
+        
+        # Assert
+        self.assertEqual(result, -15)
+    
+    def test_sum_of_elements_with_zero(self):
+        # Arrange
+        arr = [0]
+        
+        # Act
+        result = sum_of_elements(arr)
+        
+        # Assert
+        self.assertEqual(result, 0)
+
+if __name__ == '__main__':
+    unittest.main()

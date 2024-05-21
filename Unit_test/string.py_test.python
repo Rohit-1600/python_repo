@@ -1,0 +1,37 @@
+import unittest
+from unittest.mock import patch
+
+from my_file import reverse_string
+
+
+class TestReverseString(unittest.TestCase):
+    def test_reverse_string_empty(self):
+        """
+        Test reverse_string with an empty string.
+        """
+        input_str = ""
+        expected_output = ""
+        output = reverse_string(input_str)
+        self.assertEqual(output, expected_output)
+
+    def test_reverse_string_single_character(self):
+        """
+        Test reverse_string with a single character string.
+        """
+        input_str = "a"
+        expected_output = "a"
+        output = reverse_string(input_str)
+        self.assertEqual(output, expected_output)
+
+    def test_reverse_string_multiple_characters(self):
+        """
+        Test reverse_string with a string containing multiple characters.
+        """
+        input_str = "Hello, World!"
+        expected_output = "!dlroW ,olleH"
+        output = reverse_string(input_str)
+        self.assertEqual(output, expected_output)
+
+
+if __name__ == "__main__":
+    unittest.main()
