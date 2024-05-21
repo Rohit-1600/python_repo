@@ -1,0 +1,39 @@
+import unittest
+from unittest import mock
+
+from my_module import sum_of_elements
+
+class SumOfElementsTest(unittest.TestCase):
+
+    def test_sum_of_elements_with_valid_array(self):
+        arr = [1, 2, 3, 4, 5]
+        expected = 15
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+    def test_sum_of_elements_with_empty_array(self):
+        arr = []
+        expected = 0
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+    def test_sum_of_elements_with_negative_numbers(self):
+        arr = [-1, -2, -3, -4, -5]
+        expected = -15
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+    def test_sum_of_elements_with_null_values(self):
+        arr = [None, None, None]
+        expected = 0
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+    def test_sum_of_elements_with_large_array(self):
+        arr = [i for i in range(1, 10001)]
+        expected = 50005000
+        result = sum_of_elements(arr)
+        self.assertEqual(result, expected)
+
+if __name__ == '__main__':
+    unittest.main()

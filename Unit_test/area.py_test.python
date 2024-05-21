@@ -1,0 +1,49 @@
+import unittest
+from unittest.mock import patch
+
+import code
+
+class CodeTests(unittest.TestCase):
+    def test_calculate_rectangle_area(self):
+        # Test with positive values
+        length = 5
+        width = 3
+        result = code.calculate_rectangle_area(length, width)
+        self.assertEqual(result, 15)
+
+        # Test with floating point values
+        length = 2.5
+        width = 4.5
+        result = code.calculate_rectangle_area(length, width)
+        self.assertEqual(result, 11.25)
+
+        # Test with zero values
+        length = 0
+        width = 0
+        result = code.calculate_rectangle_area(length, width)
+        self.assertEqual(result, 0)
+
+        # Test with negative values
+        length = -3
+        width = 6
+        result = code.calculate_rectangle_area(length, width)
+        self.assertEqual(result, -18)
+
+        # Test with one side zero
+        length = 5
+        width = 0
+        result = code.calculate_rectangle_area(length, width)
+        self.assertEqual(result, 0)
+
+        length = 0
+        width = 5
+        result = code.calculate_rectangle_area(length, width)
+        self.assertEqual(result, 0)
+
+    def test_calculate_rectangle_area_mocked_input(self):
+        # Test with mocked input
+        with patch('code.calculate_rectangle_area', return_value=10):
+            result = code.calculate_rectangle_area(5, 2)
+            self.assertEqual(result, 10)
+
+    # Todo: Add more test cases as needed

@@ -1,0 +1,29 @@
+import unittest
+from unittest import mock
+from your_module import calculate_rectangle_area
+
+class TestCalculateRectangleArea(unittest.TestCase):
+    def test_calculate_rectangle_area(self):
+        # Test with positive length and width
+        length = 5
+        width = 3
+        expected_area = 15
+        calculated_area = calculate_rectangle_area(length, width)
+        self.assertEqual(calculated_area, expected_area)
+
+        # Test with negative length and width
+        length = -5
+        width = -3
+        expected_area = 15
+        calculated_area = calculate_rectangle_area(length, width)
+        self.assertEqual(calculated_area, expected_area)
+
+        # Test with zero length and width
+        length = 0
+        width = 0
+        expected_area = 0
+        calculated_area = calculate_rectangle_area(length, width)
+        self.assertEqual(calculated_area, expected_area)
+
+if __name__ == "__main__":
+    unittest.main()

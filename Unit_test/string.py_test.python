@@ -1,0 +1,33 @@
+import unittest
+from unittest import mock
+
+class TestReverseString(unittest.TestCase):
+    def test_reverse_string(self):
+        input_str = "Hello, World!"
+        expected_output = "!dlroW ,olleH"
+        self.assertEqual(reverse_string(input_str), expected_output)
+
+    def test_reverse_empty_string(self):
+        input_str = ""
+        expected_output = ""
+        self.assertEqual(reverse_string(input_str), expected_output)
+
+    def test_reverse_string_with_spaces(self):
+        input_str = "Hello World"
+        expected_output = "dlroW olleH"
+        self.assertEqual(reverse_string(input_str), expected_output)
+
+    def test_reverse_string_with_numbers(self):
+        input_str = "12345"
+        expected_output = "54321"
+        self.assertEqual(reverse_string(input_str), expected_output)
+
+    @mock.patch("builtins.print")
+    def test_reverse_string_print_statement(self, mock_print):
+        input_str = "Hello, World!"
+        reverse_string(input_str)
+        mock_print.assert_called_with("Original string:", input_str)
+        mock_print.assert_called_with("Reversed string:", "!dlroW ,olleH")
+
+if __name__ == "__main__":
+    unittest.main()
